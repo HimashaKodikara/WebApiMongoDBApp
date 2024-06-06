@@ -15,6 +15,7 @@ module.exports = function(app) {
     proxyTimeout: 10000,
     target: target,
     secure: false,
+    changeOrigin: true,
     headers: {
       Connection: 'Keep-Alive'
     }
