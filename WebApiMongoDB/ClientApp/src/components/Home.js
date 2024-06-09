@@ -31,15 +31,15 @@ useEffect(() => {
           <tbody>
             <tr>{
               students.length === 0 ? <div className='row waiting'><div>Loading</div> <div className='loading'></div></div>:
-              students.map(Student=><tr>
-                <td>{Student.firstname}</td>
-                <td>{Student.lastName}</td>
-                <td>{Student.className}</td>
-                <td>{Student.department}</td>
-                <td>{Student.gender}</td>
-                <td>{Student.dateOfBirth}</td>
-                <td>{Student.isGraduated}</td>
-                <td>{Student.age}</td>
+              students.map(student=><tr>
+                <td>{student.firstName}</td>
+                <td>{student.lastName}</td>
+                <td>{student.className}</td>
+                <td>{student.department}</td>
+                <td>{student.gender}</td>
+                <td>{student.dateOfBirth}</td>
+                <td>{student.isGraduated}</td>
+                <td>{student.age}</td>
               </tr>)
             }
             </tr>

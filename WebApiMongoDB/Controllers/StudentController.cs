@@ -40,7 +40,7 @@ namespace WebApiMongoDB.Controllers
         public async Task<ActionResult<Student>> Post(Student newStudent)
         {
             await _studentServices.CreateAsync(newStudent);
-            return CreatedAtAction(nameof(Get), new { id = newStudent.Id }, newStudent);
+            return CreatedAtAction(nameof(Get), new { id = newStudent.Id}, newStudent);
                 
         }
 

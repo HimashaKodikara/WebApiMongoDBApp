@@ -11,8 +11,8 @@ namespace WebApiMongoDB.Services
 
         public StudentServices(IOptions<DatabaseSettings> settings)
         {
-            var mongoCLient = new MongoClient(settings.Value.Connection);
-            var mongoDb = mongoCLient.GetDatabase(settings.Value.DatabaseName);
+            var mongoClient = new MongoClient(settings.Value.Connection);
+            var mongoDb = mongoClient.GetDatabase(settings.Value.DatabaseName);
             _studentcollection = mongoDb.GetCollection<Student>(settings.Value.CollectionName);
         }
 
