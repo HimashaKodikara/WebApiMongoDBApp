@@ -10,10 +10,28 @@ const entry = {
     age:0
 }
 export default function New(props) {
+    const addNewStudent = ()=>{
+        console.log("The new student is:",entry);
+        fetch("api/student",{
+            method:"POST",
+            body:JSON.stringify(entry)
+        }).then(r=>{
+            console.log("Response from Backend for adding new student :",r)
+        }).catch(e=>console.log("The error while adding new student",e))
+    }
     const newData = (e)=>{
         const name = e.target.name;
-        const v_ = e.target.value
+        let v_ = e.target.value
 
+        if(name_ ==='dateOfBirth'){
+            v_ = new Date(v_);
+        }
+        if(name_ === 'gender'){
+            v_ = Number(v_);
+        }
+        if(name_ === 'isGraduated'){
+            v_ = v_ === '1' ? true : false;
+        }
         entry[name] = v_
 
         console.log("The New Student Is:",entry)
@@ -56,6 +74,10 @@ export default function New(props) {
             <option value={0}>No</option>
         </select>
         
+    </div>
+    <div>
+        <div>Cancel</div>
+        <div onClick={addNewStudent}>Add</div>
     </div>
 </section>
     );
