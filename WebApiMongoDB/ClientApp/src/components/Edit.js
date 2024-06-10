@@ -19,7 +19,7 @@ export default function Edit(props) {
     const [sid,setsid] = useState("");
     const UpdateStudent = ()=>{
         console.log("The new student is:",entry);
-        fetch("api/student",{
+        fetch("api/student/"+sid,{
             method:"PUT",
             body:JSON.stringify(entry),
             headers:{
@@ -56,7 +56,8 @@ export default function Edit(props) {
             id_ = id_.split("=")[1]
         }
         if(id_){
-            fetch("api/student/"+id).then(r=> r.json()).then(d =>{
+            setsid(id_)
+            fetch("api/student/"+sid).then(r=> r.json()).then(d =>{
                 console.log("The student for update is:",d)
                 setData(d)
                 setGender(d.gender)
@@ -64,7 +65,9 @@ export default function Edit(props) {
             }).catch(e=>console.log("Error getting student for update",e))
         }
        
-    })
+    },
+    []
+)
     return(
 <section className="m-20">
     <h1>Update Student</h1>
@@ -94,7 +97,7 @@ export default function Edit(props) {
     </div>
     <div className="mt-10">
         <label htmlFor="dob">Birthday</label>
-        <input type="date" name="dateOfBirth" id="dob" onChange={newData}/>
+        <input type="date" name="dateOfBirth" defaultValue={data.dateOfBirth} id="dob" onChange={newData}/>
     </div>
     <div className="mt-10">
         <label htmlFor="graduated">Is Graduated</label>
@@ -106,7 +109,7 @@ export default function Edit(props) {
     </div>
     <div className="mt-30 row p20 justify-btw">
         <div className="btn cancel" onClick={()=> window.location = "/"}>Cancel</div>
-        <div className="btn add" onClick={UpdateStudent}>Add</div>
+        <div className="btn add" onClick={UpdateStudent}>Update</div>
     </div>
 </section>
     );
