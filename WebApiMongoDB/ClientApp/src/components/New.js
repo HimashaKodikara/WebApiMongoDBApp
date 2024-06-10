@@ -79,7 +79,7 @@ export default function New(props) {
         </select>
         
     </div>
-    <div className="mt-30">
+    <div className="mt-30 row p20 justify-around">
         <div onClick={()=> window.location = "/"}>Cancel</div>
         <div onClick={addNewStudent}>Add</div>
     </div>
