@@ -45,6 +45,8 @@ useEffect(() => {
                 <td>{student.dateOfBirth}</td>
                 <td>{student.isGraduated? "Yes" :"No"}</td>
                 <td>{student.age}</td>
+                <td>Edit</td>
+                <td>Delete</td>
               </tr>)
             }
             </tr>
