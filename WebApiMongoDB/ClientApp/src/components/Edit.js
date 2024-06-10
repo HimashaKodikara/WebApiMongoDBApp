@@ -97,7 +97,7 @@ export default function Edit(props) {
     </div>
     <div className="mt-10">
         <label htmlFor="dob">Birthday</label>
-        <input type="date" name="dateOfBirth" defaultValue={data.dateOfBirth} id="dob" onChange={newData}/>
+        <input type="date" name="dateOfBirth" defaultValue={data.dateOfBirth ? data.dateOfBirth.split("T")[0] : ''} id="dob" onChange={newData}/>
     </div>
     <div className="mt-10">
         <label htmlFor="graduated">Is Graduated</label>
