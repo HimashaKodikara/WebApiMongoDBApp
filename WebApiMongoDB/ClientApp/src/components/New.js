@@ -14,13 +14,16 @@ export default function New(props) {
         console.log("The new student is:",entry);
         fetch("api/student",{
             method:"POST",
-            body:JSON.stringify(entry)
+            body:JSON.stringify(entry),
+            headers:{
+                "Content-Type":"application/json"	
+            }
         }).then(r=>{
             console.log("Response from Backend for adding new student :",r)
         }).catch(e=>console.log("The error while adding new student",e))
     }
     const newData = (e)=>{
-        const name = e.target.name;
+        const name_ = e.target.name;
         let v_ = e.target.value
 
         if(name_ ==='dateOfBirth'){
@@ -32,7 +35,7 @@ export default function New(props) {
         if(name_ === 'isGraduated'){
             v_ = v_ === '1' ? true : false;
         }
-        entry[name] = v_
+        entry[name_] = v_
 
         console.log("The New Student Is:",entry)
     }
@@ -41,7 +44,7 @@ export default function New(props) {
     <h1>Add new Student</h1>
     <div>
         <label htmlFor="fn">First Name</label>
-        <input type="text" name="FirstName" id="fn" onChange={newData}/>
+        <input type="text" name="firstName" id="fn" onChange={newData}/>
     </div>
     <div>
         <label htmlFor="ln">Last Name</label>
