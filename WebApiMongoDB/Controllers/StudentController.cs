@@ -24,7 +24,7 @@ namespace WebApiMongoDB.Controllers
         
 
         // GET api/<StudentController>/64a5109c925955cfda51194
-        [HttpGet("{id:lenght(24)}")]
+        [HttpGet("{id:length(24)}")]
         public async Task<ActionResult<Student>> Get(string id)
         {
             Student student = await _studentServices.GetAsync(id);
@@ -45,7 +45,7 @@ namespace WebApiMongoDB.Controllers
         }
 
         // PUT api/<StudentController>/64a5109c925955cfda51194
-        [HttpPut("{id:lenght(24)}")]
+        [HttpPut("{id:length(24)}")]
         public async Task<ActionResult> Put(string id, Student updateStudent)
         {
             Student student = await _studentServices.GetAsync(id);
