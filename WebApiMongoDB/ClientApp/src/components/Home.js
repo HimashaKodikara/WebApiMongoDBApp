@@ -42,7 +42,7 @@ useEffect(() => {
                 <td>{student.className}</td>
                 <td>{student.department}</td>
                 <td>{student.gender === 0 ?"Female":"Male"}</td>
-                <td>{student.dateOfBirth}</td>
+                <td>{student.dateOfBirth.split("T")[0]}</td>
                 <td>{student.isGraduated? "Yes" :"No"}</td>
                 <td>{student.age}</td>
                 <td><a href={"/edit?id="+student.id}></a>Edit</td>

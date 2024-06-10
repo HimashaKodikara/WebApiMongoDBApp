@@ -19,7 +19,8 @@ export default function New(props) {
                 "Content-Type":"application/json"	
             }
         }).then(r=>{
-            console.log("Response from Backend for adding new student :",r)
+            console.log("Response from Backend for adding new student :",r);
+            window.location="/"
         }).catch(e=>console.log("The error while adding new student",e))
     }
     const newData = (e)=>{
@@ -79,7 +80,7 @@ export default function New(props) {
         
     </div>
     <div>
-        <div>Cancel</div>
+        <div onClick={()=> window.location = "/"}>Cancel</div>
         <div onClick={addNewStudent}>Add</div>
     </div>
 </section>
