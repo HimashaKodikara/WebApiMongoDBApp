@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const entry = {
     id: "",
@@ -14,8 +14,9 @@ const entry = {
 export default function Edit(props) {
 
     const [data,setData] = useState([]); 
-    const [gender_,setGender_] = useState([]); 
-    const [graduated,setGraduated] = useState([]); 
+    const [gender,setGender] = useState(0); 
+    const [graduated,setGraduated] = useState(false); 
+    const [sid,setsid] = useState("");
     const UpdateStudent = ()=>{
         console.log("The new student is:",entry);
         fetch("api/student",{
@@ -39,21 +40,30 @@ export default function Edit(props) {
         }
         if(name_ === 'gender'){
             v_ = Number(v_);
+            setGender(v_)
         }
         if(name_ === 'isGraduated'){
-            v_ = v_ === '1' ? true : false;
+            v_ = v_ === '1';
+            setGraduated(v_);
         }
         entry[name_] = v_
 
         console.log("The New Student Is:",entry)
     }
     useEffect(()=>{
-        fetch("api/student/"+id).then(r=> r.json()).then(d =>{
-            console.log("The student for update is:",d)
-            setData(d)
-            setGender_(d.gender)
-            setGraduated(d.isGraduated)
-        }).catch(e=>console.log("Error getting student for update",e))
+        const id_ = window.location.search
+        if(id_){
+            id_ = id_.split("=")[1]
+        }
+        if(id_){
+            fetch("api/student/"+id).then(r=> r.json()).then(d =>{
+                console.log("The student for update is:",d)
+                setData(d)
+                setGender(d.gender)
+                setGraduated(d.isGraduated)
+            }).catch(e=>console.log("Error getting student for update",e))
+        }
+       
     })
     return(
 <section className="m-20">
@@ -76,7 +86,7 @@ export default function Edit(props) {
     </div>
     <div className="mt-10">
         <label htmlFor="gender">Gender</label>
-        <select name="gender" id="gender" value={} onChange={newData}>
+        <select name="gender" id="gender" value={gender} onChange={newData}>
             <option value={1}>Male</option>
             <option value={0}>Female</option>
         </select>
@@ -88,9 +98,9 @@ export default function Edit(props) {
     </div>
     <div className="mt-10">
         <label htmlFor="graduated">Is Graduated</label>
-        <select name="idgraduated" id="graduated" onChange={newData}>
-            <option value={1}>Yes</option>
-            <option value={0}>No</option>
+        <select name="idgraduated" id="graduated" value={graduated} onChange={newData}>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
         </select>
         
     </div>
