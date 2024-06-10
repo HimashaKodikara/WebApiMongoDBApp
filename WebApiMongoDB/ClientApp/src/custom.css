@@ -63,3 +63,22 @@ input{
 .justify-around{
     justify-content: space-around;
 }
+.justify-btw{
+    justify-content: space-around;
+}
+.btn{
+    width: 60px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    background-color: gainsboro;
+    text-align: center;
+    cursor: pointer;
+}
+.btn.add{
+    background-color: green;
+    color: white;
+}
+.btn.cancel{
+    background-color: yellow;
+}
