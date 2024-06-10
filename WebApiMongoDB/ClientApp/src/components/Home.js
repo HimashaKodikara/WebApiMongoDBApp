@@ -14,7 +14,10 @@ useEffect(() => {
     return (
       <main>
          <h1>Student Manager Apllication</h1>
+         
+         <div className='add-btn'>
          <a href = "/new">+</a>
+         </div>
          <table>
           <thead>
             <tr>
@@ -26,19 +29,21 @@ useEffect(() => {
               <th>Birthday</th>
               <th>Graduated</th>
               <th>Age</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             <tr>{
               students.length === 0 ? <td colSpan="8">No student found</td>:
-              students.map(student=><tr>
+              students.map(student=><tr key={student.id}>
                 <td>{student.firstame}</td>
                 <td>{student.lastName}</td>
                 <td>{student.className}</td>
                 <td>{student.department}</td>
-                <td>{student.gender}</td>
+                <td>{student.gender === 0 ?"Female":"Male"}</td>
                 <td>{student.dateOfBirth}</td>
-                <td>{student.isGraduated}</td>
+                <td>{student.isGraduated? "Yes" :"No"}</td>
                 <td>{student.age}</td>
               </tr>)
             }

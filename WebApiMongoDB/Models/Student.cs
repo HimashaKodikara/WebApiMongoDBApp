@@ -7,7 +7,7 @@ namespace WebApiMongoDB.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; } = string.Empty;
+        public string id { get; set; } = string.Empty;
 
         [BsonElement("firstname")]
         public string FirstName { get; set; } = "Student First Name";

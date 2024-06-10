@@ -40,7 +40,7 @@ namespace WebApiMongoDB.Controllers
         public async Task<ActionResult<Student>> Post(Student newStudent)
         {
             await _studentServices.CreateAsync(newStudent);
-            return CreatedAtAction(nameof(Get), new { id = newStudent.Id}, newStudent);
+            return CreatedAtAction(nameof(Get), new { id = newStudent.id}, newStudent);
                 
         }
 
@@ -53,7 +53,7 @@ namespace WebApiMongoDB.Controllers
             {
                 return NotFound("There is no student with this id :"+id);
             }
-            updateStudent.Id = student.Id;
+            updateStudent.id = student.id;
             await _studentServices.UpdateAsync(id, updateStudent);
 
             return Ok("Updated Succesffuly");
