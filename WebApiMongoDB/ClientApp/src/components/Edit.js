@@ -43,7 +43,7 @@ export default function Edit(props) {
             setGender(v_)
         }
         if(name_ === 'isGraduated'){
-            v_ = v_ === '1';
+            v_ = v_ === 'true';
             setGraduated(v_);
         }
         entry[name_] = v_
@@ -51,7 +51,7 @@ export default function Edit(props) {
         console.log("The New Student Is:",entry)
     }
     useEffect(()=>{
-        const id_ = window.location.search
+        let id_ = window.location.search
         if(id_){
             id_ = id_.split("=")[1]
         }

@@ -34,7 +34,7 @@ useEffect(() => {
             </tr>
           </thead>
           <tbody>
-            <tr>{
+            {
               students.length === 0 ? <td colSpan="8">No student found</td>:
               students.map(student=><tr key={student.id}>
                 <td>{student.firstName}</td>
@@ -45,11 +45,11 @@ useEffect(() => {
                 <td>{student.dateOfBirth.split("T")[0]}</td>
                 <td>{student.isGraduated? "Yes" :"No"}</td>
                 <td>{student.age}</td>
-                <td><a href={"/edit?id="+student.id}></a>Edit</td>
+                <td><a href={"/edit?id="+student.id}>Edit</a></td>
                 <td>Delete</td>
               </tr>)
             }
-            </tr>
+          
           </tbody>
          </table>
       </main>
