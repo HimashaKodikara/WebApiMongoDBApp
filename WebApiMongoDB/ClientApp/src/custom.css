@@ -82,3 +82,22 @@ input{
 .btn.cancel{
     background-color: yellow;
 }
+.delete-modal{
+    position: fixed;
+    top :0;
+    bottom :0;
+    right :0;
+    left:0;
+    background-color: rgb(101, 98, 98) ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modal-item{
+    background-color: white;
+    padding: 5px 15px;
+    border-radius: 9px;
+    width: 300px;
+    text-align: center;
+}

@@ -2,15 +2,41 @@ import { useEffect,useState } from 'react';
 import React, { Component } from 'react';
 //import Student from './Student';
 
-export default function Home()  {
+export default function Home()
+  {
 const[students, setStudents] = useState([]);
+const [sid,setsid] = useState("");
 
+const handleModal = (hide) =>{
+  const deleteModal = document.querySelector('.delete-modal');
+  if(deleteModal){
+    if(hide){
+      deleteModal.classList.add("hidden");
+    }else{
+    deleteModal.classList.remove("hidden");
+    }
+  }
+};
+const openDeleteModal = (id)=>{
+  setsid(id);
+  handleModal(false)  
+
+};
+const deleteStudent = ()=>{
+  fetch("api/student/"+sid,{
+    method:"DELETE"
+  }).then(r=>{
+    console.log("The student is deleted",r);
+    handleModal(true);
+  }).catch(e=> console.log("The error while deleting the student",e))
+}
 useEffect(() => {
   fetch("api/student").then(r=> r.json()).then(d=>{
     console.log("The sudents are",d)
     setStudents(d)
   }).catch(e=> console.log("The error fatching all students :",e))
-}, [])
+}, []);
+
     return (
       <main>
          <h1>Student Manager Apllication</h1>
@@ -46,14 +72,21 @@ useEffect(() => {
                 <td>{student.isGraduated? "Yes" :"No"}</td>
                 <td>{student.age}</td>
                 <td><a href={"/edit?id="+student.id}>Edit</a></td>
-                <td>Delete</td>
+                <td onClick={() =>openDeleteModal(student.id)}>Delete</td>
               </tr>)
             }
           
           </tbody>
          </table>
-         <section>
-          
+         <section className='delete-modal'>
+          <div className='modal-item'>
+              <h3>Delete Student</h3>
+              <p>Are you sure you want to delete this student</p>
+              <div className="row mt-20 justify-btw">
+        <div className="btn cancel" onClick={()=> {handleModal(true)}}>Cancel</div>
+        <div className="btn add" onClick={deleteStudent}>Delete</div>
+    </div>
+            </div> 
          </section>
       </main>
     );
