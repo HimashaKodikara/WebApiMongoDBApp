@@ -101,3 +101,29 @@ input{
     width: 300px;
     text-align: center;
 }
+.hidden{
+    display: none;
+}
+.waiting{
+    cursor: wait;
+}
+.loading{
+    font-weight: bold;
+    animation-name: load;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    width: 0px;
+    overflow: hidden;
+}
+@keyframes load
+{
+    0%{
+        width :0px;
+    }
+    50%{
+        width:4px;
+    }
+    100%{
+        width :15px
+    }
+}

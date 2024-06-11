@@ -23,11 +23,14 @@ const openDeleteModal = (id)=>{
 
 };
 const deleteStudent = ()=>{
+ // console.log("The student id is",sid);
+  //return
   fetch("api/student/"+sid,{
     method:"DELETE"
   }).then(r=>{
     console.log("The student is deleted",r);
     handleModal(true);
+    window.location.reload();
   }).catch(e=> console.log("The error while deleting the student",e))
 }
 useEffect(() => {
@@ -78,7 +81,7 @@ useEffect(() => {
           
           </tbody>
          </table>
-         <section className='delete-modal'>
+         <section className='delete-modal hidden'>
           <div className='modal-item'>
               <h3>Delete Student</h3>
               <p>Are you sure you want to delete this student</p>
