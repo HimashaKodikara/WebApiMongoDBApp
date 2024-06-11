@@ -115,6 +115,11 @@ input{
     width: 0px;
     overflow: hidden;
 }
+tr.waiting,
+ tr.waiting td{
+    border: none;
+    overflow: visible;
+ }
 @keyframes load
 {
     0%{

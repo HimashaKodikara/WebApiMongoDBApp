@@ -64,7 +64,7 @@ useEffect(() => {
           </thead>
           <tbody>
             {
-              students.length === 0 ? <td colSpan="8">No student found</td>:
+              students.length === 0 ? <tr className='row waiting'><td className='row'>loading<span className='loading'>.....</span></td></tr>:
               students.map(student=><tr key={student.id}>
                 <td>{student.firstName}</td>
                 <td>{student.lastName}</td>
